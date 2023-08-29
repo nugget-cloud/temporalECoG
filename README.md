@@ -18,6 +18,47 @@ The script tde_run.m contains demo code showing how to extract and preprocess th
 ## A high level analysis on the repo works
 Architecture and Flow of the temporalECoG Repository:
 
+ Scripts Directory:
+        Contains primary scripts to preprocess data and run the pipeline.
+        Main scripts:
+            preprocessECoGBOLD.m, preprocessPRF.m, preprocessRET.m: Used for preprocessing various types of data.
+            runPipeline.m: A wrapper to execute the entire pipeline.
+            spatiotemporalECoG.m: The central script to analyze spatiotemporal ECoG data.
+            wrapECoGBOLD.m, wrapPRF.m, wrapRET.m: Wrappers for preprocessing functions.
+
+  Utils Directory:
+        Houses utility functions that are called by main scripts and other functions.
+        Functions deal with data manipulation, processing, and formatting, among other tasks.
+        Examples include fitNakaRushton.m (fits the Naka-Rushton function to contrast-response data) and groupElecsByVisualArea.m (groups electrodes based on atlas assignments).
+
+  External Directory:
+        Contains third-party functions or scripts that are utilized by the main code. For example:
+            cbrewer.m: Provides color maps.
+            nanconv.m: Convolves data with a kernel, treating NaNs as missing values.
+
+   Temporal Models Directory:
+        Expected to have scripts related to various temporal modeling techniques, which we have yet to explore in detail.
+
+   mkFigures Directory:
+        Likely contains scripts to generate figures, visualizations, and plots based on the analysis, which we have yet to explore.
+
+Working:
+
+   Data Preprocessing:
+        Raw data undergoes preprocessing to extract relevant signals and format the data for analysis.
+        Preprocessing varies based on the data type, e.g., ECoGBOLD, PRF, or RET.
+
+   Electrode Grouping:
+        Electrodes are grouped based on their assignments in the atlas.
+        Probabilistic assignments are also possible, where electrodes are assigned to visual areas based on given probabilities.
+
+   Data Analysis:
+        Once preprocessed, the data is subjected to various analysis techniques, potentially including the fitting of temporal models, contrast-response fitting, etc.
+        The analysis aims to decode or predict the visual stimulus from the brain activity.
+
+   Visualization:
+        Results from the analysis are visualized using various plots, providing insights into the neural representations of visual stimuli.
+
 ## Dependencies
 
 The code has dependencies to the following toolboxes:
